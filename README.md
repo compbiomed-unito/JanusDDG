@@ -59,6 +59,63 @@ python src/main.py data/s669_to_process.csv
 The "data" directory contains all the datasets used and reported in the paper. By replacing *s669_to_process.csv* with any other dataset present in the same directory, it is possible to reproduce all the other results presented in the paper.
 
 
+## Training Procedure
+
+We provide a pre-built Docker environment and the complete training dataset.
+This setup guarantees that the code runs in the exact software environment (Python 3.11.5, PyTorch CPU version for maximum compatibility) used for the study, resolving any dependency conflicts.
+
+**Prerequisites**
+
+Docker Desktop (or Docker Engine on Linux) installed and running.
+
+**Step-by-Step Guide**
+
+**1. Download the Data (Zenodo)**
+
+Due to size constraints, the training datasets and model checkpoints are hosted on Zenodo.
+
+Download the data archive (janusddg_data.zip) from Zenodo:
+
+**To Add Zenodo link**
+
+Unzip the archive in your current project folder. You should see a folder named train_data (or similar) appear.
+
+**2. Pull the Docker Image**
+
+Download the pre-built environment from Docker Hub. This image contains all necessary libraries and source code.
+
+```sh
+docker pull bardu98/janusddg:v1.0
+```
+
+**3. Run the Training Container**
+
+Launch the container by mounting your current directory (containing the unzipped data) to the container.
+
+On Linux / WSL / Mac:
+
+```sh
+docker run -p 8888:8888 -v "$(pwd):/app" bardu98/janusddg:v1.0
+```
+
+On Windows (PowerShell):
+
+```sh
+docker run -p 8888:8888 -v "${PWD}:/app" bardu98/janusddg:v1.0
+```
+
+**4. Access Jupyter Notebook**
+
+Once the container starts, look at the terminal output. You will see a URL similar to:
+http://127.0.0.1:8888/?token=...
+
+Copy and paste this link into your browser to access the Jupyter environment. Open the training notebook and run the cells.
+
+**Note on Hardware & Numerical Precision**
+
+The original results in the paper were obtained using NVIDIA GPUs (CUDA). This Docker container is configured to run on CPU to ensure universal compatibility without driver issues. Due to the inherent non-determinism of floating-point operations between GPU and CPU architectures, the results obtained from this container may show minor numerical deviations compared to the reported figures, but the statistical trends remain consistent.
+
+
 ## How to Cite
 
 If you use this tool in your research, please cite the following paper:
