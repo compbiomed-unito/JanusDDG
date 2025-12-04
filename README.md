@@ -95,13 +95,13 @@ Launch the container by mounting your current directory (containing the unzipped
 On Linux / WSL / Mac:
 
 ```sh
-docker run -p 8888:8888 -v "$(pwd):/app" bardu98/janusddg:v1.0
+docker run -p 8888:8888 -v "$(pwd)/train_data:/app/train_data_docker" bardu98/janusddg:v1.0
 ```
 
 On Windows (PowerShell):
 
 ```sh
-docker run -p 8888:8888 -v "${PWD}:/app" bardu98/janusddg:v1.0
+docker run -p 8888:8888 -v "${PWD}/train_data_docker:/app/train_data_docker" bardu98/janusddg:v1.0
 ```
 
 **4. Access Jupyter Notebook**
