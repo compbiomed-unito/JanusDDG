@@ -78,7 +78,7 @@ Download the data archive (train_data_docker.tar.gz) from Hugging Face:
 
 **https://huggingface.co/datasets/bardu98/JanusDDG_training_data/blob/main/data/train_data_docker.tar.gz**
 
-Unzip the archive in your current project folder. You should see a folder named train_data_docker (or similar) appear.
+Unzip the archive in your current project folder. You should see a folder named train_data_docker appear.
 
 **2. Pull the Docker Image**
 
